@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to initialize the chatbot
-    function initializeChatbot(chatbotUrl) {
+    function initializeChatbot(chatbotUrl, buttonText, buttonColor) {
         // Create Chatbot Button
         var chatbotButton = document.createElement('button');
         chatbotButton.id = 'chatbot-button';
-        chatbotButton.innerText = 'Chat with us';
+        chatbotButton.innerText = buttonText || 'Chat with us';
         chatbotButton.style.position = 'fixed';
         chatbotButton.style.bottom = '20px';
         chatbotButton.style.right = '20px';
         chatbotButton.style.zIndex = '1000';
         chatbotButton.style.padding = '10px 20px';
-        chatbotButton.style.backgroundColor = '#007bff';
+        chatbotButton.style.backgroundColor = buttonColor || '#007bff';
         chatbotButton.style.color = 'white';
         chatbotButton.style.border = 'none';
         chatbotButton.style.borderRadius = '5px';
@@ -49,8 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Call the function with the URL from the script tag
+    // Call the function with the URL, button text, and button color from the script tag
     var scriptTag = document.getElementById('chatbot-script');
     var chatbotUrl = scriptTag.getAttribute('data-chatbot-url');
-    initializeChatbot(chatbotUrl);
+    var buttonText = scriptTag.getAttribute('data-button-text');
+    var buttonColor = scriptTag.getAttribute('data-button-color');
+    initializeChatbot(chatbotUrl, buttonText, buttonColor);
 });
