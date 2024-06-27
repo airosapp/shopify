@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     function initializeChatbot(chatbotUrl, buttonText, buttonColor) {
+        // Create Chatbot Button
         var chatbotButton = document.createElement('button');
         chatbotButton.id = 'chatbot-button';
         chatbotButton.innerText = buttonText || 'Chat with us';
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotButton.style.cursor = 'pointer';
         document.body.appendChild(chatbotButton);
 
+        // Create Chatbot Container
         var chatbotContainer = document.createElement('div');
         chatbotContainer.id = 'chatbot-container';
         chatbotContainer.style.display = 'none';
@@ -25,8 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.border = '1px solid #ccc';
         chatbotContainer.style.borderRadius = '5px';
         chatbotContainer.style.overflow = 'hidden';
+        chatbotContainer.style.transition = 'all 0.3s ease';
+        chatbotContainer.style.transform = 'translateY(20px)';
+        chatbotContainer.style.opacity = '0';
         document.body.appendChild(chatbotContainer);
 
+        // Create Chatbot Iframe
         var chatbotIframe = document.createElement('iframe');
         chatbotIframe.id = 'chatbot-iframe';
         chatbotIframe.src = chatbotUrl;
@@ -35,11 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotIframe.style.border = 'none';
         chatbotContainer.appendChild(chatbotIframe);
 
+        // Toggle Chatbot Visibility
         chatbotButton.addEventListener('click', function() {
-            if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
+            if (chatbotContainer.style.display === 'none' || chatbotContainer.style.opacity === '0') {
                 chatbotContainer.style.display = 'block';
+                setTimeout(function() {
+                    chatbotContainer.style.transform = 'translateY(0)';
+                    chatbotContainer.style.opacity = '1';
+                }, 10);
+                chatbotButton.innerText = 'X';
             } else {
-                chatbotContainer.style.display = 'none';
+                chatbotContainer.style.transform = 'translateY(20px)';
+                chatbotContainer.style.opacity = '0';
+                setTimeout(function() {
+                    chatbotContainer.style.display = 'none';
+                }, 300);
+                chatbotButton.innerText = buttonText || 'Chat with us';
             }
         });
     }
