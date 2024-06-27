@@ -54,5 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var chatbotUrl = scriptTag.getAttribute('data-chatbot-url');
     var buttonText = scriptTag.getAttribute('data-button-text');
     var buttonColor = scriptTag.getAttribute('data-button-color');
-    initializeChatbot(chatbotUrl, buttonText, buttonColor);
+    var showChatbot = scriptTag.getAttribute('data-show-chatbot') === 'true'; // Check if the chatbot should be shown
+
+    if (showChatbot) {
+        initializeChatbot(chatbotUrl, buttonText, buttonColor);
+    }
 });
