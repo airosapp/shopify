@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to initialize the chatbot
     function initializeChatbot(chatbotUrl, buttonText, buttonColor) {
-        // Create Chatbot Button
         var chatbotButton = document.createElement('button');
         chatbotButton.id = 'chatbot-button';
         chatbotButton.innerText = buttonText || 'Chat with us';
@@ -17,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotButton.style.cursor = 'pointer';
         document.body.appendChild(chatbotButton);
 
-        // Create Chatbot Container
         var chatbotContainer = document.createElement('div');
         chatbotContainer.id = 'chatbot-container';
         chatbotContainer.style.display = 'none';
@@ -30,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.overflow = 'hidden';
         document.body.appendChild(chatbotContainer);
 
-        // Create Chatbot Iframe
         var chatbotIframe = document.createElement('iframe');
         chatbotIframe.id = 'chatbot-iframe';
         chatbotIframe.src = chatbotUrl;
@@ -39,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotIframe.style.border = 'none';
         chatbotContainer.appendChild(chatbotIframe);
 
-        // Toggle Chatbot Visibility
         chatbotButton.addEventListener('click', function() {
             if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
                 chatbotContainer.style.display = 'block';
@@ -49,14 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Call the function with the URL, button text, and button color from the script tag
     var scriptTag = document.getElementById('chatbot-script');
     var chatbotUrl = scriptTag.getAttribute('data-chatbot-url');
     var buttonText = scriptTag.getAttribute('data-button-text');
     var buttonColor = scriptTag.getAttribute('data-button-color');
-    var showChatbot = scriptTag.getAttribute('data-show-chatbot') === 'true'; // Check if the chatbot should be shown
-
-    if (showChatbot) {
-        initializeChatbot(chatbotUrl, buttonText, buttonColor);
-    }
+    initializeChatbot(chatbotUrl, buttonText, buttonColor);
 });
