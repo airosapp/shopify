@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotButton.style.padding = '10px 20px';
         chatbotButton.style.backgroundColor = buttonColor || '#007bff';
         chatbotButton.style.color = buttonFontColor || 'white';
-        chatbotButton.style.fontSize = buttonFontSize || '3px';  // Set the font size
         chatbotButton.style.border = 'none';
         chatbotButton.style.borderRadius = '8px';
         chatbotButton.style.cursor = 'pointer';
