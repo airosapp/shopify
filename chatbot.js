@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function initializeChatbot(chatbotUrl, buttonText, buttonColor) {
-        // Create Chatbot Button
+    function initializeChatbot(chatbotUrl, buttonText, buttonColor, buttonFontColor) {
         var chatbotButton = document.createElement('button');
         chatbotButton.id = 'chatbot-button';
         chatbotButton.innerText = buttonText || 'Chat with us';
@@ -10,13 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotButton.style.zIndex = '1000';
         chatbotButton.style.padding = '10px 20px';
         chatbotButton.style.backgroundColor = buttonColor || '#007bff';
-        chatbotButton.style.color = 'white';
+        chatbotButton.style.color = buttonFontColor || 'white';
         chatbotButton.style.border = 'none';
         chatbotButton.style.borderRadius = '5px';
         chatbotButton.style.cursor = 'pointer';
         document.body.appendChild(chatbotButton);
 
-        // Create Chatbot Container
         var chatbotContainer = document.createElement('div');
         chatbotContainer.id = 'chatbot-container';
         chatbotContainer.style.display = 'none';
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.opacity = '0';
         document.body.appendChild(chatbotContainer);
 
-        // Create Chatbot Iframe
         var chatbotIframe = document.createElement('iframe');
         chatbotIframe.id = 'chatbot-iframe';
         chatbotIframe.src = chatbotUrl;
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotIframe.style.border = 'none';
         chatbotContainer.appendChild(chatbotIframe);
 
-        // Toggle Chatbot Visibility
         chatbotButton.addEventListener('click', function() {
             if (chatbotContainer.style.display === 'none' || chatbotContainer.style.opacity === '0') {
                 chatbotContainer.style.display = 'block';
@@ -65,5 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var chatbotUrl = scriptTag.getAttribute('data-chatbot-url');
     var buttonText = scriptTag.getAttribute('data-button-text');
     var buttonColor = scriptTag.getAttribute('data-button-color');
-    initializeChatbot(chatbotUrl, buttonText, buttonColor);
+    var buttonFontColor = scriptTag.getAttribute('data-button-font-color');
+    initializeChatbot(chatbotUrl, buttonText, buttonColor, buttonFontColor);
 });
