@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.bottom = '70px';
         chatbotContainer.style.right = '20px';
         chatbotContainer.style.zIndex = '1000';
-        chatbotContainer.style.border = '1px solid #ccc';
         chatbotContainer.style.borderRadius = '5px';
         chatbotContainer.style.overflow = 'hidden';
         chatbotContainer.style.transition = 'all 0.3s ease';
